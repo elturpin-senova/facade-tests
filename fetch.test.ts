@@ -8,7 +8,7 @@ const spy = vi.fn();
 const handlers = [
     http.get('https://example.com/resource', () => {
         spy('resource');
-        return HttpResponse.arrayBuffer(new Uint8Array([1, 2, 3]));
+        return HttpResponse.arrayBuffer(new Uint8Array([1, 2, 3]).buffer);
     }),
 
     http.get('https://example.com/notFound', () => {
