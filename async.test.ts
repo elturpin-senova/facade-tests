@@ -122,3 +122,20 @@ describe('with an unnecessary await', () => {
         expect(spy).toHaveBeenNthCalledWith(4, 'stop');
     });
 });
+
+describe('with promise all', () => {
+    it('should work with a non promise function', async () => {
+        function nonPromiseFn() {
+            return 'plop';
+        }
+
+        async function promiseFn() {
+            return 'plip';
+        }
+
+        const [plip, plop] = await Promise.all([promiseFn(), nonPromiseFn()]);
+
+        expect(plop).toBe('plop');
+        expect(plip).toBe('plip');
+    });
+});
